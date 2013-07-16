@@ -1,0 +1,17 @@
+commitRtt
+
+numNodes:continuous
+numThreads:continuous
+remoteNodesInCommit:continuous
+preparePerSec:continuous
+commitPerSec:continuous
+rollbackPerSec:continuous
+remoteGetPerSec:continuous
+prepareMexSize:continuous
+cpuUtilization:continuous
+memory:continuous
+prepareRtt:continuous
+commitRtt:continuous
+remoteGetRtt:continuous
+
+attributes excluded:prepareRtt,remoteGetRtt
