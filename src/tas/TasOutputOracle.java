@@ -24,16 +24,16 @@ public class TasOutputOracle implements OutputOracle {
 
    @Override
    public double throughput() {
-      return 0;  // TODO: Customise this generated block
+      return this.throughput;
    }
 
    @Override
    public double abortRate() {
-      return 0;  // TODO: Customise this generated block
+      return this.abortRate;
    }
 
    @Override
    public double responseTime(int i) {
-      return 0;  // TODO: Customise this generated block
+      return this.responseTime;
    }
 }
