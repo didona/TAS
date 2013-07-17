@@ -1,4 +1,4 @@
-package tas;
+package tasOracle;
 
 import eu.cloudtm.oracles.InputOracle;
 

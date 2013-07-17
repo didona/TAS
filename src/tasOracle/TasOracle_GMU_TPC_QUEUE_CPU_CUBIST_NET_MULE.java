@@ -1,4 +1,4 @@
-package tas;
+package tasOracle;
 
 import common.exceptions.TasException;
 import eu.cloudtm.commons.EvaluatedParam;
@@ -156,9 +156,10 @@ public class TasOracle_GMU_TPC_QUEUE_CPU_CUBIST_NET_MULE implements TasOracle {
 
    private OutputOracle responseFromTas(ISPN_53_D_TPC_GMU_Result result) {
       double throughput = result.throughput() * 1e6;
-      double responseTime = result.avgR();
+      double responseTimeW = result.updateXactR();
+      double responseTimeR = result.readOnlyXactR();
       double abortProb = 1.0D - result.getProbabilities().commitProbability();
-      return new TasOutputOracle(throughput, responseTime, abortProb);
+      return new TasOutputOracle(throughput, abortProb, responseTimeW);
    }
 
 }
