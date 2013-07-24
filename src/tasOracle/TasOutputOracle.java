@@ -13,14 +13,16 @@ public class TasOutputOracle implements OutputOracle {
 
    private double throughput;
    private double abortRate;
-   private double responseTime;
+   private double responseTimeW;
+   private double responseTimeR;
 
-
-   public TasOutputOracle(double throughput, double abortRate, double responseTime) {
+   public TasOutputOracle(double throughput, double abortRate, double responseTimeW, double responseTimeR) {
       this.throughput = throughput;
       this.abortRate = abortRate;
-      this.responseTime = responseTime;
+      this.responseTimeW = responseTimeW;
+      this.responseTimeR = responseTimeR;
    }
+
 
    @Override
    public double throughput() {
@@ -34,6 +36,8 @@ public class TasOutputOracle implements OutputOracle {
 
    @Override
    public double responseTime(int i) {
-      return this.responseTime;
+      if (i == 0)
+         return responseTimeW;
+      return responseTimeR;
    }
 }

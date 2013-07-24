@@ -159,7 +159,7 @@ public class TasOracle_GMU_TPC_QUEUE_CPU_CUBIST_NET_MULE implements TasOracle {
       double responseTimeW = result.updateXactR();
       double responseTimeR = result.readOnlyXactR();
       double abortProb = 1.0D - result.getProbabilities().commitProbability();
-      return new TasOutputOracle(throughput, abortProb, responseTimeW);
+      return new TasOutputOracle(throughput, abortProb, responseTimeW, responseTimeR);
    }
 
 }
