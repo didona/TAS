@@ -1,0 +1,3 @@
+<ispn_53.probabilities.RecursiveGmuProbabilityGenerator
+    convergenceThreshold="0.01"
+    maxIterations="30"/>
