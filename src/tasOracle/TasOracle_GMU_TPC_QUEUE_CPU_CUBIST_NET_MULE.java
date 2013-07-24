@@ -151,7 +151,7 @@ public class TasOracle_GMU_TPC_QUEUE_CPU_CUBIST_NET_MULE implements TasOracle {
 
    private OutputOracle defaultResponse() {
 
-      return new TasOutputOracle(0, 0, 0);
+      return new TasOutputOracle(0, 0, 0,0);
    }
 
    private OutputOracle responseFromTas(ISPN_53_D_TPC_GMU_Result result) {
