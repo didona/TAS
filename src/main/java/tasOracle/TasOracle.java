@@ -1,6 +1,5 @@
 package tasOracle;
 
-import eu.cloudtm.oracles.Oracle;
 
 
 /**
