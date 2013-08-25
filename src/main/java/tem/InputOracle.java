@@ -1,4 +1,4 @@
-package tasOracle;
+package tem;
 
 import eu.cloudtm.autonomicManager.commons.EvaluatedParam;
 import eu.cloudtm.autonomicManager.commons.ForecastParam;

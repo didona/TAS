@@ -1,6 +1,5 @@
-package tasOracle;
+package tem;
 
-import eu.cloudtm.autonomicManager.oracles.exceptions.OracleException;
 
 /**
  * Created by: Fabio Perfetti
