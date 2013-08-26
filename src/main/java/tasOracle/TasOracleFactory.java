@@ -1,7 +1,8 @@
 package tasOracle;
 
 
-import tem.InputOracle;
+import eu.cloudtm.autonomicManager.commons.ForecastParam;
+import eu.cloudtm.autonomicManager.oracles.InputOracle;
 
 /**
  * // TODO: Document this
@@ -26,7 +27,7 @@ public class TasOracleFactory {
    }
 
    private RP rp(InputOracle input){
-      return null;
+      return RP.valueOf(input.getForecastParam(ForecastParam.ReplicationDegree).toString());
    }
 
    private enum RP{

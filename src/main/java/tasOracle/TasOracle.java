@@ -1,6 +1,10 @@
 package tasOracle;
 
 
+import eu.cloudtm.autonomicManager.oracles.InputOracle;
+import eu.cloudtm.autonomicManager.oracles.OutputOracle;
+import eu.cloudtm.autonomicManager.oracles.exceptions.OracleException;
+
 /**
  * // TODO: Document this
  *
@@ -10,9 +14,8 @@ package tasOracle;
 public class TasOracle implements TasOracle_I {
 
 
-
    @Override
-   public tem.OutputOracle forecast(tem.InputOracle input) throws tem.OracleException {
+   public OutputOracle forecast(InputOracle input) throws OracleException {
       TasOracle_I tas = new TasOracleFactory().buildTasOracle(input);
       return tas.forecast(input);
    }

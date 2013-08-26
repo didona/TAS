@@ -21,12 +21,12 @@ package tasOracle;/*
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 
-import eu.cloudtm.commons.EvaluatedParam;
-import eu.cloudtm.commons.Param;
+import eu.cloudtm.autonomicManager.commons.EvaluatedParam;
+import eu.cloudtm.autonomicManager.commons.Param;
+import eu.cloudtm.autonomicManager.oracles.InputOracle;
 import ispn_53.input.ISPN_52_TPC_GMU_Workload;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import tem.InputOracle;
 
 /**
  * @author Diego Didona, didona@gsd.inesc-id.pt

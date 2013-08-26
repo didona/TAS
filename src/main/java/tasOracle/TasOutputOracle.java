@@ -1,8 +1,8 @@
 package tasOracle;
 
 
+import eu.cloudtm.autonomicManager.oracles.OutputOracle;
 import ispn_53.common.ISPN_53_D_GMU_Result;
-import tem.OutputOracle;
 
 /**
  * // TODO: Document this
@@ -17,7 +17,6 @@ public class TasOutputOracle implements OutputOracle {
    public TasOutputOracle(ISPN_53_D_GMU_Result result) {
       this.result = result;
    }
-
 
    @Override
    public double throughput(int txClassId) {

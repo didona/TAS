@@ -1,7 +1,7 @@
 package tasOracle;
 
 
-import tem.Oracle;
+import eu.cloudtm.autonomicManager.oracles.Oracle;
 
 /**
  * // TODO: Document this

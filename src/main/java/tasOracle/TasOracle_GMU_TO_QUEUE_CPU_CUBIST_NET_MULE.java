@@ -22,18 +22,18 @@ package tasOracle;/*
  */
 
 import common.exceptions.TasException;
-import eu.cloudtm.commons.Param;
+import eu.cloudtm.autonomicManager.commons.Param;
+import eu.cloudtm.autonomicManager.oracles.InputOracle;
+import eu.cloudtm.autonomicManager.oracles.OutputOracle;
+import eu.cloudtm.autonomicManager.oracles.exceptions.OracleException;
 import ispn_53.gmu.to.core.Tas_QCCN_GMU_TO;
 import ispn_53.gmu.to.input.cpu.ServiceTimes_Cpu_GMU_TO;
 import ispn_53.gmu.to.input.cpuNet.ServiceTimes_CpuNet_QueueCubist_GMU_TO;
 import ispn_53.gmu.to.input.net.ServiceTimes_Net_Cubist_GMU_TO;
 import ispn_53.gmu.to.result.Result_GMU_TO;
 import ispn_53.input.ISPN_52_TPC_GMU_Workload;
-import ispn_53.input.physical.GmuCpuServiceTimesImpl;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import tem.InputOracle;
-import tem.OracleException;
 
 /**
  * @author Diego Didona, didona@gsd.inesc-id.pt
@@ -44,7 +44,7 @@ public class TasOracle_GMU_TO_QUEUE_CPU_CUBIST_NET_MULE extends CommonTasOracle 
    private static final Log log = LogFactory.getLog(TasOracle_GMU_TO_QUEUE_CPU_CUBIST_NET_MULE.class);
 
    @Override
-   public tem.OutputOracle forecast(tem.InputOracle input) throws OracleException {
+   public OutputOracle forecast(InputOracle input) throws OracleException {
       ServiceTimes_CpuNet_QueueCubist_GMU_TO serviceTimes = buildServiceTimes(input);
       Tas_QCCN_GMU_TO tas = new Tas_QCCN_GMU_TO();
       ISPN_52_TPC_GMU_Workload workload = buildWorkload(input);
@@ -66,7 +66,6 @@ public class TasOracle_GMU_TO_QUEUE_CPU_CUBIST_NET_MULE extends CommonTasOracle 
    private ServiceTimes_Net_Cubist_GMU_TO buildNetS(InputOracle input) {
       return new ServiceTimes_Net_Cubist_GMU_TO();
    }
-
 
    private ServiceTimes_Cpu_GMU_TO buildCpuS(InputOracle input) {
       double updateTxBusinessLogicS = getDoubleParam(input, Param.LocalUpdateTxLocalServiceTime);
