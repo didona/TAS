@@ -21,7 +21,7 @@ public class TasOracleFactory {
          case TO:
             return new TasOracle_GMU_TO_QUEUE_CPU_CUBIST_NET_MULE();
          default:
-            throw new IllegalArgumentException("Unknwon replication protocol");
+            throw new IllegalArgumentException("Unknown replication protocol");
       }
 
    }

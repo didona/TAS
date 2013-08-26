@@ -21,9 +21,15 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
+        <dependency>
+            <groupId>eu.cloudtm</groupId>
+            <artifactId>autonomicManager</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
-	 <distributionManagement>
+    <distributionManagement>
         <repository>
             <id>cloud</id>
             <name>cloud</name>
