@@ -29,6 +29,40 @@
 
     </dependencies>
 
+
+    <!--TO RESOLVE CLOUD-TM DEPENDENCIES-->
+    <repositories>
+            <repository>
+                <releases>
+                    <enabled>true</enabled>
+                    <updatePolicy>never</updatePolicy>
+                </releases>
+                <snapshots>
+                    <enabled>true</enabled>
+                    <updatePolicy>never</updatePolicy>
+                </snapshots>
+                <id>cloudtm-repository</id>
+                <name>Cloud-TM's Maven Repository</name>
+                <url>http://cloudtm.ist.utl.pt:8083/nexus/content/groups/public/</url>
+            </repository>
+        </repositories>
+        <pluginRepositories>
+            <pluginRepository>
+                <releases>
+                    <enabled>true</enabled>
+                    <updatePolicy>never</updatePolicy>
+                </releases>
+                <snapshots>
+                    <enabled>true</enabled>
+                    <updatePolicy>never</updatePolicy>
+                </snapshots>
+                <id>cloudtm-plugin-repository</id>
+                <name>Cloud-TM's Maven Repository</name>
+                <url>http://cloudtm.ist.utl.pt:8083/nexus/content/groups/public/</url>
+            </pluginRepository>
+        </pluginRepositories>
+
+    <!--TO DO MVN DEPLOY-->
     <distributionManagement>
         <repository>
             <id>cloud</id>
