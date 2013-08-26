@@ -24,7 +24,6 @@ package tasOracle;/*
 import eu.cloudtm.commons.EvaluatedParam;
 import eu.cloudtm.commons.Param;
 import ispn_53.input.ISPN_52_TPC_GMU_Workload;
-import ispn_53.input.physical.GmuCpuServiceTimesImpl;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import tem.InputOracle;
@@ -33,7 +32,7 @@ import tem.InputOracle;
  * @author Diego Didona, didona@gsd.inesc-id.pt
  *         Date: 25/08/13
  */
-public abstract class CommonTasOracle implements TasOracleI {
+public abstract class CommonTasOracle implements TasOracle_I {
 
    protected Log log = LogFactory.getLog(CommonTasOracle.class);
 
@@ -80,8 +79,9 @@ public abstract class CommonTasOracle implements TasOracleI {
       workload.setReadsPerROXact(readsPerROXact);
       workload.setReadsPerWrXact(readsPerWrXact);
       workload.setLocalPrimaryOwnerProbability(primaryOwnerProb);
-      workload.setLocalCommitQueueWaitingTime(localCommitW);
-      workload.setRemoteCommitQueueWaitingTime(remoteCommitW);
+      workload.setUnconditionalLocalCommitQueueWaitingTime(localCommitW);
+      workload.setUnconditionalRemoteCommitQueueWaitingTime(remoteCommitW);
+      workload.setUnconditionalRemoteGetWaitingTime(0);
       System.out.println(workload);
       return workload;
    }

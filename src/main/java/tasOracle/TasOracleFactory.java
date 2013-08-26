@@ -11,7 +11,7 @@ import tem.InputOracle;
  */
 public class TasOracleFactory {
 
-   public TasOracleI buildTasOracle(InputOracle input){
+   public TasOracle_I buildTasOracle(InputOracle input){
       switch (rp(input)) {
          case TPC:
             return new TasOracle_GMU_TPC_QUEUE_CPU_CUBIST_NET_MULE();

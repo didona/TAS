@@ -40,7 +40,7 @@ public class TasOracle_GMU_TPC_QUEUE_CPU_CUBIST_NET_MULE extends CommonTasOracle
    }
 
    private GmuCpuServiceTimesImpl buildCpuS(InputOracle input) {
-      double updateTxBusinessLogicS = getDoubleParam(input, Param.LocalUpdateTxLocalServiceTime));
+      double updateTxBusinessLogicS = getDoubleParam(input, Param.LocalUpdateTxLocalServiceTime);
       double updateTxPrepareS = getDoubleParam(input, Param.LocalUpdateTxPrepareServiceTime);
       double updateTxCommitS = getDoubleParam(input, Param.LocalUpdateTxCommitServiceTime);
       double updateTxLocalLocalRollbackS = getDoubleParam(input, Param.LocalUpdateTxLocalRollbackServiceTime);
