@@ -16,6 +16,8 @@ public class TestTas {
    //private static final String testPath = "/Users/diego/Software/Validation/data/130804PB";
 
    public static void main(String[] args) {
+      if (true)
+         throw new RuntimeException("Only 4 Diego :P");
       PropertyConfigurator.configure("conf/log4j.properties");
       File dir = new File(testPath);
       for (File dir_2 : dir.listFiles()) {
