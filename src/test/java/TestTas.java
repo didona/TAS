@@ -1,3 +1,4 @@
+import eu.cloudtm.autonomicManager.oracles.OutputOracle;
 import eu.cloudtm.autonomicManager.oracles.exceptions.OracleException;
 import org.apache.log4j.PropertyConfigurator;
 import tasOracle.TasOracle;
@@ -27,8 +28,8 @@ public class TestTas {
                CsvInputOracle csvI = new CsvInputOracle(csv);
                TasOracle t = new TasOracle();
                try {
-                  t.forecast(csvI);
-                  System.out.println(csv.getPath() + " OK");
+                  OutputOracle out = t.forecast(csvI);
+                  System.out.println(csv.getPath() + "readR "+out.responseTime(0)+" writeR "+out.responseTime(1)+" readT "+out.throughput(0)+" writeT "+out.throughput(1)+" readA "+out.abortRate(0)+" writeA "+out.abortRate(1));
                } catch (OracleException e) {
                   System.out.println(csv.getPath() + " KO " + e.getMessage());
                }
