@@ -7,6 +7,8 @@
     <groupId>TasOracle</groupId>
     <artifactId>TasOracle</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <!--DEPENDENCIES-->
     <dependencies>
 
         <dependency>
@@ -35,7 +37,7 @@
 
     </dependencies>
 
-
+    <!--EXTERNAL REPO (Not in my settings.xml)-->
     <repositories>
         <repository>
             <releases>
@@ -67,7 +69,7 @@
         </pluginRepository>
     </pluginRepositories>
 
-    <!--TO DO MV-->
+    <!--TO DO MVN DEPLOY-->
     <distributionManagement>
         <repository>
             <id>cloud</id>
@@ -81,7 +83,7 @@
         </snapshotRepository>
     </distributionManagement>
 
-
+    <!--A simple plugin to copy resource files-->
     <build>
         <plugins>
             <plugin>
