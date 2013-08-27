@@ -4,9 +4,6 @@ import org.apache.log4j.PropertyConfigurator;
 import tasOracle.TasOracle;
 
 import java.io.File;
-import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.LogManager;
 
 /**
  * @author Diego Didona, didona@gsd.inesc-id.pt
@@ -14,7 +11,9 @@ import java.util.logging.LogManager;
  */
 public class TestTas {
 
-   private static final String testPath = "/Users/diego/Software/Validation/data/130724";
+   // private static final String testPath = "/Users/diego/Software/Validation/data/130724";
+   private static final String testPath = "/Users/diego/Software/Validation/data/130724TO";
+   //private static final String testPath = "/Users/diego/Software/Validation/data/130804PB";
 
    public static void main(String[] args) {
       PropertyConfigurator.configure("conf/log4j.properties");
@@ -29,7 +28,7 @@ public class TestTas {
                TasOracle t = new TasOracle();
                try {
                   OutputOracle out = t.forecast(csvI);
-                  System.out.println(csv.getPath() + "readR "+out.responseTime(0)+" writeR "+out.responseTime(1)+" readT "+out.throughput(0)+" writeT "+out.throughput(1)+" readA "+out.abortRate(0)+" writeA "+out.abortRate(1));
+                  System.out.println(csv.getPath() + "readR " + out.responseTime(0) + " writeR " + out.responseTime(1) + " readT " + out.throughput(0) + " writeT " + out.throughput(1) + " readA " + out.abortRate(0) + " writeA " + out.abortRate(1));
                } catch (OracleException e) {
                   System.out.println(csv.getPath() + " KO " + e.getMessage());
                }
