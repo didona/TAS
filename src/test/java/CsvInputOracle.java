@@ -74,6 +74,8 @@ public class CsvInputOracle implements InputOracle {
             return remoteUpateTxRollbackServiceTime();
          case ReadOnlyTxTotalCpuTime:
             return localReadOnlyTxTotalCpuTime();
+         case PercentageSuccessWriteTransactions:
+            return writePercentage();
          default:
             throw new IllegalArgumentException("Param " + param + " is not present");
       }
@@ -98,6 +100,8 @@ public class CsvInputOracle implements InputOracle {
    public Object getForecastParam(ForecastParam forecastParam) {
       switch (forecastParam) {
          case ReplicationProtocol:
+            return replicationProtocol();
+         case ReplicationDegree:
             return replicationProtocol();
          default:
             throw new IllegalArgumentException("Param " + forecastParam + " is not present");
@@ -157,19 +161,19 @@ public class CsvInputOracle implements InputOracle {
    }
 
    private double localUpdateTxPrepareServiceTime() {
-      return csvParser.getAvgParam("localUpdateTxPrepareServiceTime");
+      return csvParser.getAvgParam("LocalUpdateTxPrepareServiceTime");
    }
 
    private double localUpdateTxCommitServiceTime() {
-      return csvParser.getAvgParam("localUpdateTxCommitServiceTime");
+      return csvParser.getAvgParam("LocalUpdateTxCommitServiceTime");
    }
 
    private double localUpdateTxLocalRollbackServiceTime() {
-      return csvParser.getAvgParam("localUpdateTxLocalRollbackServiceTime");
+      return csvParser.getAvgParam("LocalUpdateTxLocalRollbackServiceTime");
    }
 
    private double localUpdateTxRemoteRollbackServiceTime() {
-      return csvParser.getAvgParam("localUpdateTxRemoteRollbackServiceTime");
+      return csvParser.getAvgParam("LocalUpdateTxRemoteRollbackServiceTime");
    }
 
    private double localReadOnlyTxTotalCpuTime() {
@@ -194,6 +198,10 @@ public class CsvInputOracle implements InputOracle {
 
    private double gmuClusterGetCommandServiceTime() {
       return csvParser.remoteRemoteGetServiceTime();
+   }
+
+   private double writePercentage() {
+      return csvParser.writePercentageXact();
    }
 
 
