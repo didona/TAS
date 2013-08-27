@@ -4,6 +4,9 @@ import eu.cloudtm.autonomicManager.commons.Param;
 import eu.cloudtm.autonomicManager.oracles.InputOracle;
 import parse.radargun.Ispn5_2CsvParser;
 
+import java.io.File;
+import java.io.IOException;
+
 /**
  * @author Diego Didona, didona@gsd.inesc-id.pt
  *         Date: 27/08/13
@@ -11,6 +14,26 @@ import parse.radargun.Ispn5_2CsvParser;
 public class CsvInputOracle implements InputOracle {
 
    Ispn5_2CsvParser csvParser;
+
+   public CsvInputOracle(Ispn5_2CsvParser csvParser) {
+      this.csvParser = csvParser;
+   }
+
+   public CsvInputOracle(String path) {
+      try {
+         this.csvParser = new Ispn5_2CsvParser(path);
+      } catch (IOException e) {
+         throw new IllegalArgumentException("Path " + path + " is nonexistent");
+      }
+   }
+
+   public CsvInputOracle(File f) {
+      try {
+         this.csvParser = new Ispn5_2CsvParser(f.getAbsolutePath());
+      } catch (IOException e) {
+         throw new IllegalArgumentException("Path " + f.getAbsolutePath() + " is nonexistent");
+      }
+   }
 
    @Override
    public Object getParam(Param param) {
