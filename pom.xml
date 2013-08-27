@@ -22,6 +22,12 @@
         </dependency>
 
         <dependency>
+            <groupId>RadargunReportParser</groupId>
+            <artifactId>RadargunReportParser</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
             <groupId>eu.cloudtm</groupId>
             <artifactId>autonomicManager</artifactId>
             <version>1.0-SNAPSHOT</version>
@@ -93,7 +99,7 @@
                             <outputDirectory>${basedir}/conf/tas/</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>resources</directory>
+                                    <directory>src/main/resources</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
