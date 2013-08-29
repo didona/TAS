@@ -2,6 +2,7 @@ package tasOracle;
 
 
 import eu.cloudtm.autonomicManager.commons.ForecastParam;
+import eu.cloudtm.autonomicManager.commons.ReplicationProtocol;
 import eu.cloudtm.autonomicManager.oracles.InputOracle;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -18,16 +19,16 @@ public class TasOracleFactory {
 
    public TasOracle_I buildTasOracle(InputOracle input) {
       switch (rp(input)) {
-         case TPC: {
-            System.out.println("Going to solve for TPC");
+         case TWOPC: {
+            //System.out.println("Going to solve for TPC");
             return new TasOracle_GMU_TPC_QUEUE_CPU_CUBIST_NET_MULE();
          }
          case PB: {
-            System.out.println("Going to solve for PB");
+            //System.out.println("Going to solve for PB");
             return new TasOracle_GMU_PB_QUEUE_CPU_CUBIST_NET_MULE();
          }
          case TO: {
-            System.out.println("Going to solve for TO");
+            //System.out.println("Going to solve for TO");
             return new TasOracle_GMU_TO_QUEUE_CPU_CUBIST_NET_MULE();
          }
          default:
@@ -36,10 +37,8 @@ public class TasOracleFactory {
 
    }
 
-   private RP rp(InputOracle input) {
-      if ((input.getForecastParam(ForecastParam.ReplicationDegree).toString()).equals("2PC"))
-         return RP.TPC;
-      return RP.valueOf(input.getForecastParam(ForecastParam.ReplicationDegree).toString());
+   private ReplicationProtocol rp(InputOracle input) {
+      return (ReplicationProtocol)input.getForecastParam(ForecastParam.ReplicationProtocol);
    }
 
    private enum RP {
