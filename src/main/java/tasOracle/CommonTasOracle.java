@@ -37,7 +37,25 @@ public abstract class CommonTasOracle implements TasOracle_I {
    protected Log log = LogFactory.getLog(CommonTasOracle.class);
 
    protected double getDoubleParam(InputOracle input, Param param) {
-      return (Double) input.getParam(param);
+      Object o = input.getParam(param);
+      if (o instanceof Double)
+         return (Double) o;
+      if (o instanceof Long)
+         return (Long) o;
+      if (o instanceof Integer)
+         return (Integer) o;
+      throw new IllegalArgumentException(param + " is not Double, Long or Int");
+   }
+
+   protected double getDoubleEvaluatedParam(InputOracle input, EvaluatedParam param) {
+      Object o = input.getEvaluatedParam(param);
+      if (o instanceof Double)
+         return (Double) o;
+      if (o instanceof Long)
+         return (Long) o;
+      if (o instanceof Integer)
+         return (Integer) o;
+      throw new IllegalArgumentException(param + " is not Double, Long or Int");
    }
 
    protected ISPN_52_TPC_GMU_Workload buildWorkload(InputOracle inputOracle) {
@@ -46,11 +64,11 @@ public abstract class CommonTasOracle implements TasOracle_I {
       double numNodes = this.getDoubleParam(inputOracle, Param.NumNodes);
       double writePercentage = this.getDoubleParam(inputOracle, Param.PercentageSuccessWriteTransactions);
       double wrPerXact = this.getDoubleParam(inputOracle, Param.AvgPutsPerWrTransaction);
-      double threadsPerNode = (Double) inputOracle.getEvaluatedParam(EvaluatedParam.MAX_ACTIVE_THREADS);
-      double applicationContentionFactor = (Double) inputOracle.getEvaluatedParam(EvaluatedParam.ACF);
+      double threadsPerNode = this.getDoubleEvaluatedParam(inputOracle,EvaluatedParam.MAX_ACTIVE_THREADS);
+      double applicationContentionFactor = this.getDoubleEvaluatedParam(inputOracle,EvaluatedParam.ACF);
       double prepareMessageSize = this.getDoubleParam(inputOracle, Param.AvgPrepareCommandSize);
       double mem = this.getDoubleParam(inputOracle, Param.MemoryInfo_used) * 1e-6;
-      double numCores = (Double) inputOracle.getEvaluatedParam(EvaluatedParam.CORE_PER_CPU);
+      double numCores = this.getDoubleEvaluatedParam(inputOracle,EvaluatedParam.CORE_PER_CPU);
       double lambda = 0;
 
       //Gmu-specific
