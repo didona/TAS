@@ -60,5 +60,4 @@ public class TasOutputOracle implements OutputOracle {
       return 1; //TODO
    }
 
-
 }

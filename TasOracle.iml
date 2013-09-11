@@ -11,6 +11,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="autonomicManager-1.0-SNAPSHOT1" level="project" />
     <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: Tas:Tas:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: CubistOracle:CubistOracle:1.0-SNAPSHOT" level="project" />
@@ -18,8 +19,8 @@
     <orderEntry type="library" name="Maven: Queues:Queues:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: RadargunReportParser:RadargunReportParser:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-math3:3.2" level="project" />
+    <orderEntry type="library" name="Maven: eu.cloudtm:autonomicManager:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.9" level="project" />
-    <orderEntry type="library" name="autonomicManager-1.0-SNAPSHOT1" level="project" />
   </component>
 </module>
 
