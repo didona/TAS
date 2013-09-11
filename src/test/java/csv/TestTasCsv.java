@@ -1,3 +1,5 @@
+package csv;
+
 import eu.cloudtm.autonomicManager.oracles.OutputOracle;
 import eu.cloudtm.autonomicManager.oracles.exceptions.OracleException;
 import org.apache.log4j.PropertyConfigurator;
@@ -9,15 +11,13 @@ import java.io.File;
  * @author Diego Didona, didona@gsd.inesc-id.pt
  *         Date: 27/08/13
  */
-public class TestTas {
+public class TestTasCsv {
 
    // private static final String testPath = "/Users/diego/Software/Validation/data/130724";
    private static final String testPath = "/Users/diego/Software/Validation/data/130724TO";
    //private static final String testPath = "/Users/diego/Software/Validation/data/130804PB";
 
    public static void main(String[] args) {
-      if (true)
-         throw new RuntimeException("Only 4 Diego :P");
       PropertyConfigurator.configure("conf/log4j.properties");
       File dir = new File(testPath);
       for (File dir_2 : dir.listFiles()) {
