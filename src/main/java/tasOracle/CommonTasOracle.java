@@ -22,6 +22,7 @@ package tasOracle;/*
  */
 
 import eu.cloudtm.autonomicManager.commons.EvaluatedParam;
+import eu.cloudtm.autonomicManager.commons.ForecastParam;
 import eu.cloudtm.autonomicManager.commons.Param;
 import eu.cloudtm.autonomicManager.oracles.InputOracle;
 import ispn_53.input.ISPN_52_TPC_GMU_Workload;
@@ -58,10 +59,21 @@ public abstract class CommonTasOracle implements TasOracle_I {
       throw new IllegalArgumentException(param + " is not Double, Long or Int");
    }
 
+   protected double getDoubleForecastParam(InputOracle input, ForecastParam param) {
+      Object o = input.getForecastParam(param);
+      if (o instanceof Double)
+         return (Double) o;
+      if (o instanceof Long)
+         return (Long) o;
+      if (o instanceof Integer)
+         return (Integer) o;
+      throw new IllegalArgumentException(param + " is not Double, Long or Int");
+   }
+
    protected ISPN_52_TPC_GMU_Workload buildWorkload(InputOracle inputOracle) {
       ispn_53.input.ISPN_52_TPC_GMU_Workload workload = new ISPN_52_TPC_GMU_Workload();
       //Common
-      double numNodes = this.getDoubleParam(inputOracle, Param.NumNodes);
+      double numNodes = this.getDoubleForecastParam(inputOracle, ForecastParam.NumNodes);
       double writePercentage = this.getDoubleParam(inputOracle, Param.PercentageSuccessWriteTransactions);
       double wrPerXact = this.getDoubleParam(inputOracle, Param.AvgPutsPerWrTransaction);
       double threadsPerNode = this.getDoubleEvaluatedParam(inputOracle, EvaluatedParam.MAX_ACTIVE_THREADS);
@@ -74,7 +86,7 @@ public abstract class CommonTasOracle implements TasOracle_I {
       //Gmu-specific
       int firstWrite = 1;//(int)this.getDoubleParam(inputOracle,Param. NumReadsBeforeWrite);
       double localAccessProbability = 1.0D / numNodes;
-      double replicationDegree = this.getDoubleParam(inputOracle, Param.ReplicationDegree);
+      double replicationDegree = this.getDoubleForecastParam(inputOracle, ForecastParam.ReplicationDegree);
       double readsPerROXact = this.getDoubleParam(inputOracle, Param.AvgGetsPerROTransaction);
       double readsPerWrXact = this.getDoubleParam(inputOracle, Param.AvgGetsPerWrTransaction);
       double primaryOwnerProb = 1.0D / numNodes;
