@@ -3,6 +3,7 @@ package csv;
 import eu.cloudtm.autonomicManager.commons.EvaluatedParam;
 import eu.cloudtm.autonomicManager.commons.ForecastParam;
 import eu.cloudtm.autonomicManager.commons.Param;
+import eu.cloudtm.autonomicManager.commons.ReplicationProtocol;
 import eu.cloudtm.autonomicManager.oracles.InputOracle;
 import parse.radargun.Ispn5_2CsvParser;
 
@@ -10,8 +11,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * @author Diego Didona, didona@gsd.inesc-id.pt
- *         Date: 27/08/13
+ * @author Diego Didona, didona@gsd.inesc-id.pt Date: 27/08/13
  */
 public class CsvInputOracle implements InputOracle {
 
@@ -78,6 +78,24 @@ public class CsvInputOracle implements InputOracle {
             return localReadOnlyTxTotalCpuTime();
          case PercentageSuccessWriteTransactions:
             return writePercentage();
+         // parameter added to make this class DAGS compliant
+         case PercentageWriteTransactions:
+            return writePercentage();
+         case AvgLocalGetTime:
+            return AvgLocalGetTime();
+         case LocalUpdateTxPrepareResponseTime:
+            return LocalUpdateTxPrepareResponseTime();
+         case LocalUpdateTxLocalResponseTime:
+            LocalUpdateTxLocalResponseTime();
+         case AverageWriteTime:
+            return AverageWriteTime();
+         //these are not present in csvfile
+         case AvgTxArrivalRate:
+            return AvgTxArrivalRate();
+         case AvgNTCBTime:
+            return AvgNTCBTime();
+         case NumberOfEntries:
+            return numberOfEntries();
          default:
             throw new IllegalArgumentException("Param " + param + " is not present");
       }
@@ -146,8 +164,8 @@ public class CsvInputOracle implements InputOracle {
       return 2;
    }
 
-   private String replicationProtocol() {
-      return csvParser.getReplicationProtocol();
+   private ReplicationProtocol replicationProtocol() {
+      return ReplicationProtocol.valueOf(csvParser.getReplicationProtocol());
    }
 
    private double getsPerRoXact() {
@@ -204,6 +222,35 @@ public class CsvInputOracle implements InputOracle {
 
    private double writePercentage() {
       return csvParser.writePercentageXact();
+   }
+
+   private double AvgTxArrivalRate() {
+      return csvParser.usecThroughput() * csvParser.getNumNodes();
+   }
+
+   private double AvgNTCBTime() {
+      return 0D;
+   }
+
+
+   private double AvgLocalGetTime() {
+      return csvParser.getAvgParam("AvgLocalGetTime");
+   }
+
+   private double LocalUpdateTxPrepareResponseTime() {
+      return csvParser.getAvgParam("LocalUpdateTxPrepareResponseTime");
+   }
+
+   private double LocalUpdateTxLocalResponseTime() {
+      return csvParser.getAvgParam("LocalUpdateTxLocalResponseTime");
+   }
+
+   private double AverageWriteTime() {
+      return csvParser.getAvgParam("LocalUpdateTxLocalServiceTime");//adapted
+   }
+
+   private double numberOfEntries() {
+      return csvParser.numKeys();
    }
 
 
