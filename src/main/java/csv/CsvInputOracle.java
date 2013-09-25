@@ -158,7 +158,7 @@ public class CsvInputOracle implements InputOracle {
          case ReplicationDegree:
             return replicationDegree();
          case NumNodes:
-            return numNodes();
+            return (long)numNodes();
          default:
             throw new IllegalArgumentException("Param " + forecastParam + " is not present");
       }
