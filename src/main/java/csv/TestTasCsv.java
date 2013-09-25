@@ -14,7 +14,7 @@ import java.io.File;
 public class TestTasCsv {
 
    // private static final String testPath = "/Users/diego/Software/Validation/data/130724";
-   private static final String testPath = "/home/etorre/NetBeansProjects/Learner2/csvfile";
+      static final String testPath ="/home/etorre/Downloads/TAS/csvfile";
    //private static final String testPath = "/Users/diego/Software/Validation/data/130804PB";
    
    public static void main(String[] args) {
