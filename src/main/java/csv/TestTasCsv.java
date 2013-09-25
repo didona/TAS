@@ -5,7 +5,7 @@ import eu.cloudtm.autonomicManager.oracles.exceptions.OracleException;
 import org.apache.log4j.PropertyConfigurator;
 import tasOracle.TasOracle;
 
-import java.io.File;
+import java.io.File;  
 
 /**
  * @author Diego Didona, didona@gsd.inesc-id.pt

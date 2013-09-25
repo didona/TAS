@@ -1,13 +1,43 @@
 package csv;
 
 import eu.cloudtm.autonomicManager.commons.EvaluatedParam;
+import static eu.cloudtm.autonomicManager.commons.EvaluatedParam.ACF;
+import static eu.cloudtm.autonomicManager.commons.EvaluatedParam.CORE_PER_CPU;
+import static eu.cloudtm.autonomicManager.commons.EvaluatedParam.MAX_ACTIVE_THREADS;
 import eu.cloudtm.autonomicManager.commons.ForecastParam;
+import static eu.cloudtm.autonomicManager.commons.ForecastParam.NumNodes;
 import static eu.cloudtm.autonomicManager.commons.ForecastParam.ReplicationDegree;
 import eu.cloudtm.autonomicManager.commons.Param;
-import static eu.cloudtm.autonomicManager.commons.Param.NumNodes;
+import static eu.cloudtm.autonomicManager.commons.Param.AverageWriteTime;
+import static eu.cloudtm.autonomicManager.commons.Param.AvgClusteredGetCommandReplySize;
+import static eu.cloudtm.autonomicManager.commons.Param.AvgGetsPerROTransaction;
+import static eu.cloudtm.autonomicManager.commons.Param.AvgGetsPerWrTransaction;
+import static eu.cloudtm.autonomicManager.commons.Param.AvgLocalGetTime;
+import static eu.cloudtm.autonomicManager.commons.Param.AvgNTCBTime;
+import static eu.cloudtm.autonomicManager.commons.Param.AvgPrepareCommandSize;
+import static eu.cloudtm.autonomicManager.commons.Param.AvgPutsPerWrTransaction;
+import static eu.cloudtm.autonomicManager.commons.Param.AvgTxArrivalRate;
+import static eu.cloudtm.autonomicManager.commons.Param.GMUClusteredGetCommandServiceTime;
+import static eu.cloudtm.autonomicManager.commons.Param.LocalUpdateTxCommitServiceTime;
+import static eu.cloudtm.autonomicManager.commons.Param.LocalUpdateTxLocalResponseTime;
+import static eu.cloudtm.autonomicManager.commons.Param.LocalUpdateTxLocalRollbackServiceTime;
+import static eu.cloudtm.autonomicManager.commons.Param.LocalUpdateTxLocalServiceTime;
+import static eu.cloudtm.autonomicManager.commons.Param.LocalUpdateTxPrepareResponseTime;
+import static eu.cloudtm.autonomicManager.commons.Param.LocalUpdateTxPrepareServiceTime;
+import static eu.cloudtm.autonomicManager.commons.Param.LocalUpdateTxRemoteRollbackServiceTime;
+import static eu.cloudtm.autonomicManager.commons.Param.MemoryInfo_used;
+import static eu.cloudtm.autonomicManager.commons.Param.NumberOfEntries;
+import static eu.cloudtm.autonomicManager.commons.Param.PercentageSuccessWriteTransactions;
+import static eu.cloudtm.autonomicManager.commons.Param.PercentageWriteTransactions;
+import static eu.cloudtm.autonomicManager.commons.Param.ReadOnlyTxTotalCpuTime;
+import static eu.cloudtm.autonomicManager.commons.Param.RemoteGetServiceTime;
+import static eu.cloudtm.autonomicManager.commons.Param.RemoteUpdateTxCommitServiceTime;
+import static eu.cloudtm.autonomicManager.commons.Param.RemoteUpdateTxPrepareServiceTime;
+import static eu.cloudtm.autonomicManager.commons.Param.RemoteUpdateTxRollbackServiceTime;
 import eu.cloudtm.autonomicManager.commons.ReplicationProtocol;
 import eu.cloudtm.autonomicManager.oracles.InputOracle;
 import parse.radargun.Ispn5_2CsvParser;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -40,66 +70,66 @@ public class CsvInputOracle implements InputOracle {
    }
 
    @Override
-   public Object getParam(Param param) {
-      switch (param) {
+   public Object getParam(Param param) { 
+      switch (param)  {
          case NumNodes:
-            return param.castTo(numNodes(),param.getClazz());
+            return (long)numNodes();
          case ReplicationDegree:
-            return param.castTo(replicationDegree(),param.getClazz());
+            return (long)replicationDegree();
          case AvgPutsPerWrTransaction:
-            return param.castTo(putsPerWrXact(),param.getClazz());
+            return putsPerWrXact();
          case AvgPrepareCommandSize:
-            return param.castTo(prepareCommandSize(),param.getClazz());
+            return (long)prepareCommandSize();
          case MemoryInfo_used:
-            return param.castTo(memory(),param.getClazz());
+            return (long)memory();
          case AvgGetsPerROTransaction:
-            return param.castTo(getsPerRoXact(),param.getClazz());
+            return (long)getsPerRoXact();
          case AvgGetsPerWrTransaction:
-            return param.castTo(getsPerWrXact(),param.getClazz());
+            return (long)getsPerWrXact();
          case LocalUpdateTxLocalServiceTime:
-            return param.castTo(localUpdateTxLocalServiceTime(),param.getClazz());
+            return (long)localUpdateTxLocalServiceTime();
          case LocalUpdateTxPrepareServiceTime:
-            return param.castTo(localUpdateTxPrepareServiceTime(),param.getClazz());
+            return (long)localUpdateTxPrepareServiceTime();
          case LocalUpdateTxCommitServiceTime:
-            return param.castTo(localUpdateTxCommitServiceTime(),param.getClazz());
+            return (long)localUpdateTxCommitServiceTime();
          case LocalUpdateTxLocalRollbackServiceTime:
-            return param.castTo(localUpdateTxLocalRollbackServiceTime(),param.getClazz());
+            return (long)localUpdateTxLocalRollbackServiceTime();
          case LocalUpdateTxRemoteRollbackServiceTime:
-            return param.castTo(localUpdateTxRemoteRollbackServiceTime(),param.getClazz());
+            return (long)localUpdateTxRemoteRollbackServiceTime();
          case RemoteGetServiceTime:
-            return param.castTo(remoteGetServiceTime(),param.getClazz());
+            return (long)remoteGetServiceTime();
          case GMUClusteredGetCommandServiceTime:
-            return param.castTo(gmuClusterGetCommandServiceTime(),param.getClazz());
+            return gmuClusterGetCommandServiceTime();
          case RemoteUpdateTxPrepareServiceTime:
-            return param.castTo(remoteUpdateTxPrepareServiceTime(),param.getClazz());
+            return (long)remoteUpdateTxPrepareServiceTime();
          case RemoteUpdateTxCommitServiceTime:
-            return param.castTo(remoteUpdateTxCommitServiceTime(),param.getClazz());
+            return (long)remoteUpdateTxCommitServiceTime();
          case RemoteUpdateTxRollbackServiceTime:
-            return param.castTo(remoteUpateTxRollbackServiceTime(),param.getClazz());
+            return (long)remoteUpateTxRollbackServiceTime();
          case ReadOnlyTxTotalCpuTime:
-            return param.castTo(localReadOnlyTxTotalCpuTime(),param.getClazz());
+            return localReadOnlyTxTotalCpuTime();
          case PercentageSuccessWriteTransactions:
-            return param.castTo(writePercentage(),param.getClazz());
+            return writePercentage();
          // parameter added to make this class DAGS compliant
          case PercentageWriteTransactions:
-            return param.castTo(writePercentage(),param.getClazz());
+            return writePercentage();
          case AvgLocalGetTime:
-            return param.castTo(AvgLocalGetTime(),param.getClazz());
+            return (long)AvgLocalGetTime();
          case LocalUpdateTxPrepareResponseTime:
-            return param.castTo(LocalUpdateTxPrepareResponseTime(),param.getClazz());
+            return (long)LocalUpdateTxPrepareResponseTime();
          case LocalUpdateTxLocalResponseTime:
-            return param.castTo(LocalUpdateTxLocalResponseTime(),param.getClazz());
+            return (long)LocalUpdateTxLocalResponseTime();
          case AverageWriteTime:
-            return param.castTo(AverageWriteTime(),param.getClazz());
+            return (long)AverageWriteTime();
          //these are not present in csvfile
          case AvgTxArrivalRate:
-            return param.castTo(AvgTxArrivalRate(),param.getClazz());
+            return AvgTxArrivalRate();
          case AvgNTCBTime:
-            return param.castTo(AvgNTCBTime(),param.getClazz());
+            return (long)AvgNTCBTime();
          case NumberOfEntries:
-            return param.castTo(numberOfEntries(),param.getClazz());
+            return (int)numberOfEntries();
          case AvgClusteredGetCommandReplySize:
-             return param.castTo(AvgClusteredGetCommandReplySize(),param.getClazz());
+             return(long) AvgClusteredGetCommandReplySize();
          default:
             throw new IllegalArgumentException("Param " + param + " is not present");
       }
@@ -109,7 +139,7 @@ public class CsvInputOracle implements InputOracle {
    @Override
    public Object getEvaluatedParam(EvaluatedParam evaluatedParam) {
       switch (evaluatedParam) {
-         case  MAX_ACTIVE_THREADS:
+         case MAX_ACTIVE_THREADS:
             return numThreadsPerNode();
          case ACF:
             return acf();
@@ -138,20 +168,20 @@ public class CsvInputOracle implements InputOracle {
     * AD HOC METHODS *
     */
 
-   private int numNodes() {
-      return (int)csvParser.getNumNodes();
+   private double numNodes() {
+      return csvParser.getNumNodes();
    }
 
-   private int replicationDegree() {
-      return (int)csvParser.replicationDegree();
+   private double replicationDegree() {
+      return csvParser.replicationDegree();
    }
 
    private double putsPerWrXact() {
       return csvParser.putsPerWrXact();
    }
 
-   private int numThreadsPerNode() {
-      return (int)csvParser.numThreads();
+   private double numThreadsPerNode() {
+      return csvParser.numThreads();
    }
 
    private double prepareCommandSize() {
@@ -166,13 +196,17 @@ public class CsvInputOracle implements InputOracle {
       return 1e-6 * csvParser.mem();
    }
 
-   private int cpus() {
+   private double cpus() {
       return 2;
    }
 
    private ReplicationProtocol replicationProtocol() {
+       System.out.println(csvParser.getReplicationProtocol());
+       if(csvParser.getReplicationProtocol().equals("2PC"))
+        return ReplicationProtocol.TWOPC;  
+          
       return ReplicationProtocol.valueOf(csvParser.getReplicationProtocol());
-   }
+              }
 
    private double getsPerRoXact() {
       return csvParser.readsPerROXact();
@@ -264,5 +298,5 @@ public class CsvInputOracle implements InputOracle {
        return csvParser.getAvgParam("AvgClusteredGetCommandReplySize");
    }
 
-
 }
+

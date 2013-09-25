@@ -70,8 +70,8 @@ public class CsvInputOracle implements InputOracle {
    }
 
    @Override
-   public Object getParam(Param param) {
-      switch (param) {
+   public Object getParam(Param param) { 
+      switch (param)  {
          case NumNodes:
             return (long)numNodes();
          case ReplicationDegree:
