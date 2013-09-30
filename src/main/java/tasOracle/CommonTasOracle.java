@@ -112,6 +112,7 @@ public abstract class CommonTasOracle implements TasOracle_I {
       workload.setUnconditionalLocalCommitQueueWaitingTime(localCommitW);
       workload.setUnconditionalRemoteCommitQueueWaitingTime(remoteCommitW);
       workload.setUnconditionalRemoteGetWaitingTime(0);
+      workload.setRR(true);
       if (log.isTraceEnabled()) log.trace(workload);
       return workload;
    }
