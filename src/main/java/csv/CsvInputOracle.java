@@ -140,11 +140,11 @@ public class CsvInputOracle implements InputOracle {
    public Object getEvaluatedParam(EvaluatedParam evaluatedParam) {
       switch (evaluatedParam) {
          case MAX_ACTIVE_THREADS:
-            return (int)numThreadsPerNode();
+            return numThreadsPerNode();
          case ACF:
             return acf();
          case CORE_PER_CPU:
-            return (int)cpus();
+            return cpus();
          default:
             throw new IllegalArgumentException("Param " + evaluatedParam + " is not present");
       }
@@ -156,7 +156,7 @@ public class CsvInputOracle implements InputOracle {
          case ReplicationProtocol:
             return replicationProtocol();
          case ReplicationDegree:
-            return (long)replicationDegree();
+            return replicationDegree();
          case NumNodes:
             return (long)numNodes();
          default:
