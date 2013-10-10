@@ -20,24 +20,26 @@ public class FakeOracle implements Oracle {
 
    private final static double WIN_T = 1D;
    private final static double LOSE_T = 0D;
-
    private final static double WIN_R = 1D;
    private final static double LOSE_R = 100D;
-
    private final static double WIN_A = 0D;
    private final static double LOSE_A = 1D;
-
+   private final static double WIN_NODES = 5D;
    private final static Log log = LogFactory.getLog(FakeOracle.class);
 
    @Override
    public OutputOracle forecast(InputOracle inputOracle) throws OracleException {
       final boolean t = log.isTraceEnabled();
-      ReplicationProtocol rp = winnerRP(inputOracle);
-      if (inputOracle.getForecastParam(ForecastParam.ReplicationProtocol).equals(rp))
+      ReplicationProtocol winnerRP = winnerRP(inputOracle);
+      ReplicationProtocol queryRP = (ReplicationProtocol) inputOracle.getForecastParam(ForecastParam.ReplicationProtocol);
+      double nodes = ((Number) inputOracle.getForecastParam(ForecastParam.NumNodes)).doubleValue();
+      if (t)
+         log.trace("Forecasting for " + queryRP + " and " + nodes + " nodes");
+      if (queryRP.equals(winnerRP) &&
+              nodes == WIN_NODES)
          return buildWinnerFakeOutput(inputOracle);
       return buildLoserFakeOutput(inputOracle);
    }
-
 
    private FakeOutputOracle buildWinnerFakeOutput(InputOracle i) {
       double abort[] = buildDoubleArray(WIN_A);
@@ -53,7 +55,6 @@ public class FakeOracle implements Oracle {
       return new FakeOutputOracle(xput, resp, abort);
    }
 
-
    private ReplicationProtocol winnerRP(InputOracle inputOracle) {
       double avgPutsPerTx = (Double) inputOracle.getParam(Param.AvgPutsPerWrTransaction);
       if (avgPutsPerTx < 5) {
@@ -64,7 +65,6 @@ public class FakeOracle implements Oracle {
          return ReplicationProtocol.PB;
       }
    }
-
 
    private double[] buildDoubleArray(double value) {
       return new double[]{value, value};

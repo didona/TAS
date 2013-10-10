@@ -1,43 +1,11 @@
 package csv;
 
 import eu.cloudtm.autonomicManager.commons.EvaluatedParam;
-import static eu.cloudtm.autonomicManager.commons.EvaluatedParam.ACF;
-import static eu.cloudtm.autonomicManager.commons.EvaluatedParam.CORE_PER_CPU;
-import static eu.cloudtm.autonomicManager.commons.EvaluatedParam.MAX_ACTIVE_THREADS;
 import eu.cloudtm.autonomicManager.commons.ForecastParam;
-import static eu.cloudtm.autonomicManager.commons.ForecastParam.NumNodes;
-import static eu.cloudtm.autonomicManager.commons.ForecastParam.ReplicationDegree;
 import eu.cloudtm.autonomicManager.commons.Param;
-import static eu.cloudtm.autonomicManager.commons.Param.AverageWriteTime;
-import static eu.cloudtm.autonomicManager.commons.Param.AvgClusteredGetCommandReplySize;
-import static eu.cloudtm.autonomicManager.commons.Param.AvgGetsPerROTransaction;
-import static eu.cloudtm.autonomicManager.commons.Param.AvgGetsPerWrTransaction;
-import static eu.cloudtm.autonomicManager.commons.Param.AvgLocalGetTime;
-import static eu.cloudtm.autonomicManager.commons.Param.AvgNTCBTime;
-import static eu.cloudtm.autonomicManager.commons.Param.AvgPrepareCommandSize;
-import static eu.cloudtm.autonomicManager.commons.Param.AvgPutsPerWrTransaction;
-import static eu.cloudtm.autonomicManager.commons.Param.AvgTxArrivalRate;
-import static eu.cloudtm.autonomicManager.commons.Param.GMUClusteredGetCommandServiceTime;
-import static eu.cloudtm.autonomicManager.commons.Param.LocalUpdateTxCommitServiceTime;
-import static eu.cloudtm.autonomicManager.commons.Param.LocalUpdateTxLocalResponseTime;
-import static eu.cloudtm.autonomicManager.commons.Param.LocalUpdateTxLocalRollbackServiceTime;
-import static eu.cloudtm.autonomicManager.commons.Param.LocalUpdateTxLocalServiceTime;
-import static eu.cloudtm.autonomicManager.commons.Param.LocalUpdateTxPrepareResponseTime;
-import static eu.cloudtm.autonomicManager.commons.Param.LocalUpdateTxPrepareServiceTime;
-import static eu.cloudtm.autonomicManager.commons.Param.LocalUpdateTxRemoteRollbackServiceTime;
-import static eu.cloudtm.autonomicManager.commons.Param.MemoryInfo_used;
-import static eu.cloudtm.autonomicManager.commons.Param.NumberOfEntries;
-import static eu.cloudtm.autonomicManager.commons.Param.PercentageSuccessWriteTransactions;
-import static eu.cloudtm.autonomicManager.commons.Param.PercentageWriteTransactions;
-import static eu.cloudtm.autonomicManager.commons.Param.ReadOnlyTxTotalCpuTime;
-import static eu.cloudtm.autonomicManager.commons.Param.RemoteGetServiceTime;
-import static eu.cloudtm.autonomicManager.commons.Param.RemoteUpdateTxCommitServiceTime;
-import static eu.cloudtm.autonomicManager.commons.Param.RemoteUpdateTxPrepareServiceTime;
-import static eu.cloudtm.autonomicManager.commons.Param.RemoteUpdateTxRollbackServiceTime;
 import eu.cloudtm.autonomicManager.commons.ReplicationProtocol;
 import eu.cloudtm.autonomicManager.oracles.InputOracle;
 import parse.radargun.Ispn5_2CsvParser;
-
 
 import java.io.File;
 import java.io.IOException;
@@ -70,42 +38,42 @@ public class CsvInputOracle implements InputOracle {
    }
 
    @Override
-   public Object getParam(Param param) { 
-      switch (param)  {
+   public Object getParam(Param param) {
+      switch (param) {
          case NumNodes:
-            return (long)numNodes();
+            return (long) numNodes();
          case ReplicationDegree:
-            return (long)replicationDegree();
+            return (long) replicationDegree();
          case AvgPutsPerWrTransaction:
             return putsPerWrXact();
          case AvgPrepareCommandSize:
-            return (long)prepareCommandSize();
+            return (long) prepareCommandSize();
          case MemoryInfo_used:
-            return (long)memory();
+            return (long) memory();
          case AvgGetsPerROTransaction:
-            return (long)getsPerRoXact();
+            return (long) getsPerRoXact();
          case AvgGetsPerWrTransaction:
-            return (long)getsPerWrXact();
+            return (long) getsPerWrXact();
          case LocalUpdateTxLocalServiceTime:
-            return (long)localUpdateTxLocalServiceTime();
+            return (long) localUpdateTxLocalServiceTime();
          case LocalUpdateTxPrepareServiceTime:
-            return (long)localUpdateTxPrepareServiceTime();
+            return (long) localUpdateTxPrepareServiceTime();
          case LocalUpdateTxCommitServiceTime:
-            return (long)localUpdateTxCommitServiceTime();
+            return (long) localUpdateTxCommitServiceTime();
          case LocalUpdateTxLocalRollbackServiceTime:
-            return (long)localUpdateTxLocalRollbackServiceTime();
+            return (long) localUpdateTxLocalRollbackServiceTime();
          case LocalUpdateTxRemoteRollbackServiceTime:
-            return (long)localUpdateTxRemoteRollbackServiceTime();
+            return (long) localUpdateTxRemoteRollbackServiceTime();
          case RemoteGetServiceTime:
-            return (long)remoteGetServiceTime();
+            return (long) remoteGetServiceTime();
          case GMUClusteredGetCommandServiceTime:
             return gmuClusterGetCommandServiceTime();
          case RemoteUpdateTxPrepareServiceTime:
-            return (long)remoteUpdateTxPrepareServiceTime();
+            return (long) remoteUpdateTxPrepareServiceTime();
          case RemoteUpdateTxCommitServiceTime:
-            return (long)remoteUpdateTxCommitServiceTime();
+            return (long) remoteUpdateTxCommitServiceTime();
          case RemoteUpdateTxRollbackServiceTime:
-            return (long)remoteUpateTxRollbackServiceTime();
+            return (long) remoteUpateTxRollbackServiceTime();
          case ReadOnlyTxTotalCpuTime:
             return localReadOnlyTxTotalCpuTime();
          case PercentageSuccessWriteTransactions:
@@ -114,22 +82,22 @@ public class CsvInputOracle implements InputOracle {
          case PercentageWriteTransactions:
             return writePercentage();
          case AvgLocalGetTime:
-            return (long)AvgLocalGetTime();
+            return (long) AvgLocalGetTime();
          case LocalUpdateTxPrepareResponseTime:
-            return (long)LocalUpdateTxPrepareResponseTime();
+            return (long) LocalUpdateTxPrepareResponseTime();
          case LocalUpdateTxLocalResponseTime:
-            return (long)LocalUpdateTxLocalResponseTime();
+            return (long) LocalUpdateTxLocalResponseTime();
          case AverageWriteTime:
-            return (long)AverageWriteTime();
+            return (long) AverageWriteTime();
          //these are not present in csvfile
          case AvgTxArrivalRate:
             return AvgTxArrivalRate();
          case AvgNTCBTime:
-            return (long)AvgNTCBTime();
+            return (long) AvgNTCBTime();
          case NumberOfEntries:
-            return (int)numberOfEntries();
+            return (int) numberOfEntries();
          case AvgClusteredGetCommandReplySize:
-             return(long) AvgClusteredGetCommandReplySize();
+            return (long) AvgClusteredGetCommandReplySize();
          default:
             throw new IllegalArgumentException("Param " + param + " is not present");
       }
@@ -140,11 +108,11 @@ public class CsvInputOracle implements InputOracle {
    public Object getEvaluatedParam(EvaluatedParam evaluatedParam) {
       switch (evaluatedParam) {
          case MAX_ACTIVE_THREADS:
-            return (int)numThreadsPerNode();
+            return (int) numThreadsPerNode();
          case ACF:
             return acf();
          case CORE_PER_CPU:
-            return (int)cpus();
+            return (int) cpus();
          default:
             throw new IllegalArgumentException("Param " + evaluatedParam + " is not present");
       }
@@ -156,9 +124,9 @@ public class CsvInputOracle implements InputOracle {
          case ReplicationProtocol:
             return replicationProtocol();
          case ReplicationDegree:
-            return (long)replicationDegree();
+            return (long) replicationDegree();
          case NumNodes:
-            return (long)numNodes();
+            return (long) numNodes();
          default:
             throw new IllegalArgumentException("Param " + forecastParam + " is not present");
       }
@@ -201,12 +169,12 @@ public class CsvInputOracle implements InputOracle {
    }
 
    private ReplicationProtocol replicationProtocol() {
-       System.out.println(csvParser.getReplicationProtocol());
-       if(csvParser.getReplicationProtocol().equals("2PC"))
-        return ReplicationProtocol.TWOPC;  
-          
+      System.out.println(csvParser.getReplicationProtocol());
+      if (csvParser.getReplicationProtocol().equals("2PC"))
+         return ReplicationProtocol.TWOPC;
+
       return ReplicationProtocol.valueOf(csvParser.getReplicationProtocol());
-              }
+   }
 
    private double getsPerRoXact() {
       return csvParser.readsPerROXact();
@@ -272,7 +240,6 @@ public class CsvInputOracle implements InputOracle {
       return 0D;
    }
 
-
    private double AvgLocalGetTime() {
       return csvParser.getAvgParam("AvgLocalGetTime");
    }
@@ -292,10 +259,9 @@ public class CsvInputOracle implements InputOracle {
    private double numberOfEntries() {
       return csvParser.numKeys();
    }
-   
-   private double AvgClusteredGetCommandReplySize(){
-   
-       return csvParser.getAvgParam("AvgClusteredGetCommandReplySize");
+
+   private double AvgClusteredGetCommandReplySize() {
+      return csvParser.getAvgParam("AvgClusteredGetCommandReplySize");
    }
 
 }
