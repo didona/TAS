@@ -25,6 +25,7 @@ public class FakeOracle implements Oracle {
    private final static double WIN_A = 0D;
    private final static double LOSE_A = 1D;
    private final static double WIN_NODES = 5D;
+   private final static double WIN_RD = 5D;
    private final static Log log = LogFactory.getLog(FakeOracle.class);
 
    @Override
@@ -32,11 +33,14 @@ public class FakeOracle implements Oracle {
       final boolean t = log.isTraceEnabled();
       ReplicationProtocol winnerRP = winnerRP(inputOracle);
       ReplicationProtocol queryRP = (ReplicationProtocol) inputOracle.getForecastParam(ForecastParam.ReplicationProtocol);
+      double rd = ((Number) inputOracle.getForecastParam(ForecastParam.ReplicationDegree)).doubleValue();
       double nodes = ((Number) inputOracle.getForecastParam(ForecastParam.NumNodes)).doubleValue();
       if (t)
          log.trace("Forecasting for " + queryRP + " and " + nodes + " nodes");
       if (queryRP.equals(winnerRP) &&
-              nodes == WIN_NODES)
+              nodes == WIN_NODES &&
+              rd == WIN_RD
+              )
          return buildWinnerFakeOutput(inputOracle);
       return buildLoserFakeOutput(inputOracle);
    }
