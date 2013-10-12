@@ -261,6 +261,7 @@ public class CsvInputOracle implements InputOracle {
    }
 
    private double AvgClusteredGetCommandReplySize() {
+
       return csvParser.getAvgParam("AvgClusteredGetCommandReplySize");
    }
 
