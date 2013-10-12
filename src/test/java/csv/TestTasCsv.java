@@ -3,7 +3,7 @@ package csv;
 import eu.cloudtm.autonomicManager.oracles.OutputOracle;
 import eu.cloudtm.autonomicManager.oracles.exceptions.OracleException;
 import org.apache.log4j.PropertyConfigurator;
-import tasOracle.TasOracle;
+import tasOracle.common.TasOracle;
 
 import java.io.File;
 

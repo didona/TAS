@@ -1,4 +1,4 @@
-package tasOracle;
+package tasOracle.common;
 
 
 import eu.cloudtm.autonomicManager.oracles.OutputOracle;

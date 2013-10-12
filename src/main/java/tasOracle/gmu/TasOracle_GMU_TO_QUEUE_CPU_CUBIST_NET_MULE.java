@@ -1,4 +1,4 @@
-package tasOracle;/*
+package tasOracle.gmu;/*
  * INESC-ID, Instituto de Engenharia de Sistemas e Computadores Investigação e Desevolvimento em Lisboa
  * Copyright 2013 INESC-ID and/or its affiliates and other
  * contributors as indicated by the @author tags. All rights reserved.
@@ -34,6 +34,8 @@ import ispn_53.gmu.to.result.Result_GMU_TO;
 import ispn_53.input.ISPN_52_TPC_GMU_Workload;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import tasOracle.common.CommonTasOracle;
+import tasOracle.common.TasOutputOracle;
 
 /**
  * @author Diego Didona, didona@gsd.inesc-id.pt

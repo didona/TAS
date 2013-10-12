@@ -1,11 +1,11 @@
-package tasOracle;
+package tasOracle.gmu;
 
 
-import eu.cloudtm.autonomicManager.commons.ForecastParam;
-import eu.cloudtm.autonomicManager.commons.ReplicationProtocol;
 import eu.cloudtm.autonomicManager.oracles.InputOracle;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import tasOracle.common.factories.TasOracleAbstractFactory;
+import tasOracle.common.TasOracle_I;
 
 /**
  * // TODO: Document this
@@ -13,9 +13,9 @@ import org.apache.commons.logging.LogFactory;
  * @author diego
  * @since 4.0
  */
-public class TasOracleFactory {
+public class TasOracleFactory_GMU extends TasOracleAbstractFactory {
 
-   private final static Log log = LogFactory.getLog(TasOracleFactory.class);
+   private final static Log log = LogFactory.getLog(TasOracleFactory_GMU.class);
 
    public TasOracle_I buildTasOracle(InputOracle input) {
       final boolean t = log.isTraceEnabled();
@@ -38,9 +38,7 @@ public class TasOracleFactory {
 
    }
 
-   private ReplicationProtocol rp(InputOracle input) {
-      return (ReplicationProtocol) input.getForecastParam(ForecastParam.ReplicationProtocol);
-   }
+
 
 
 }
