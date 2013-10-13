@@ -12,6 +12,8 @@ import ispn_53.common.ISPN_53_D_GMU_Result;
  */
 public class TasOutputOracle implements OutputOracle {
 
+   private static final double micToSec = 1e6;
+   private static final double micToMSec = 1e-3;
    ISPN_53_D_GMU_Result result;
 
    public TasOutputOracle(ISPN_53_D_GMU_Result result) {
@@ -21,9 +23,9 @@ public class TasOutputOracle implements OutputOracle {
    @Override
    public double throughput(int txClassId) {
       if (txClassId == TasOracle_I.AVG_WR)
-         return result.wrThroughput();
+         return result.wrThroughput() * micToSec;
       else if (txClassId == TasOracle_I.AVG_RO)
-         return result.roThroughput();
+         return result.roThroughput() * micToSec;
       throw new IllegalArgumentException("Response time for tx class id " + txClassId + " is not available");
    }
 
@@ -39,9 +41,9 @@ public class TasOutputOracle implements OutputOracle {
    @Override
    public double responseTime(int i) {
       if (i == TasOracle_I.AVG_WR)
-         return result.updateXactR();
+         return result.updateXactR() * micToMSec;
       else if (i == TasOracle_I.AVG_RO)
-         return result.readOnlyXactR();
+         return result.readOnlyXactR() * micToMSec;
       throw new IllegalArgumentException("Response time for tx class id " + i + " is not available");
    }
 
