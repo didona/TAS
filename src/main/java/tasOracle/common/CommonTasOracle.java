@@ -85,8 +85,18 @@ public abstract class CommonTasOracle implements TasOracle_I {
 
       //Gmu-specific
       int firstWrite = 1;//(int)this.getDoubleParam(inputOracle,Param. NumReadsBeforeWrite);
-      double localAccessProbability = 1.0D / numNodes;
       double replicationDegree = this.getDoubleForecastParam(inputOracle, ForecastParam.ReplicationDegree);
+      if (replicationDegree == 0) {
+         log.info("RD was zero. Setting to 2");
+         replicationDegree = 2D;
+      }
+
+      double localAccessProbability = replicationDegree / numNodes;
+      if (localAccessProbability > 1) {
+         log.info("RD was " + replicationDegree + " with only " + numNodes + " nodes. Setting full replication");
+         localAccessProbability = 1D;
+      }
+
       double readsPerROXact = this.getDoubleParam(inputOracle, Param.AvgGetsPerROTransaction);
       double readsPerWrXact = this.getDoubleParam(inputOracle, Param.AvgGetsPerWrTransaction);
       double primaryOwnerProb = 1.0D / numNodes;
