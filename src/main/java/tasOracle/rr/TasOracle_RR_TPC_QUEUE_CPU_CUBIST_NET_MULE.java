@@ -38,6 +38,7 @@ public class TasOracle_RR_TPC_QUEUE_CPU_CUBIST_NET_MULE extends TasOracle_GMU_TP
          ISPN_53_D_TPC_GMU_Result result;
 
          result = tas.solve(workload, serviceTimes);
+         log.trace("RESULT " + result);
          return new TasOutputOracle(result);
       } catch (Exception e) {
          log.error(e);

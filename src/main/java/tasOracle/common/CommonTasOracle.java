@@ -75,7 +75,7 @@ public abstract class CommonTasOracle implements TasOracle_I {
       //Common
       double numNodes = this.getDoubleForecastParam(inputOracle, ForecastParam.NumNodes);
       double writePercentage = this.getDoubleParam(inputOracle, Param.PercentageSuccessWriteTransactions);
-      double wrPerXact = this.getDoubleParam(inputOracle, Param.AvgPutsPerWrTransaction);
+      double wrPerXact = this.getDoubleParam(inputOracle, Param.AvgNumPutsBySuccessfulLocalTx);
       double threadsPerNode = this.getDoubleEvaluatedParam(inputOracle, EvaluatedParam.MAX_ACTIVE_THREADS);
       double applicationContentionFactor = this.getDoubleEvaluatedParam(inputOracle, EvaluatedParam.ACF);
       double prepareMessageSize = this.getDoubleParam(inputOracle, Param.AvgPrepareCommandSize);
