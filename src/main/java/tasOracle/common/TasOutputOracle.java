@@ -62,4 +62,9 @@ public class TasOutputOracle implements OutputOracle {
       return 1; //TODO
    }
 
+   /*
+   public ISPN_53_D_GMU_Result getResult(){
+      return this.result;
+   }
+   */
 }

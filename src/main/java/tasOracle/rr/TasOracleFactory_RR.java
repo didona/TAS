@@ -23,6 +23,14 @@ public class TasOracleFactory_RR extends TasOracleAbstractFactory {
             if (t) log.trace("Going to solve for TPC");
             return new TasOracle_RR_TPC_QUEUE_CPU_CUBIST_NET_MULE();
          }
+         case PB: {
+            if (t) log.trace("Going to solve for PB");
+            return new TasOracle_RR_PB_QUEUE_CPU_CUBIST_NET_MULE();
+         }
+         case TO: {
+            if (t) log.trace("Going to solve for TO");
+            return new TasOracle_RR_TO_QUEUE_CPU_CUBIST_NET_MULE();
+         }
          default:
             throw new IllegalArgumentException("Replication protocol not supported " + rp(input));
       }
