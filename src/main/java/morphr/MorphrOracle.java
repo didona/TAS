@@ -1,4 +1,4 @@
-package fake;
+package morphr;
 
 import eu.cloudtm.autonomicManager.commons.ForecastParam;
 import eu.cloudtm.autonomicManager.commons.Param;
@@ -16,7 +16,7 @@ import org.apache.commons.logging.LogFactory;
  * @author diego
  * @since 4.0
  */
-public class FakeOracle implements Oracle {
+public class MorphrOracle implements Oracle {
 
    private final static double WIN_T = 1D;
    private final static double LOSE_T = 0D;
@@ -26,7 +26,7 @@ public class FakeOracle implements Oracle {
    private final static double LOSE_A = 1D;
    private final static double WIN_NODES = 5D;
    private final static double WIN_RD = 5D;
-   private final static Log log = LogFactory.getLog(FakeOracle.class);
+   private final static Log log = LogFactory.getLog(MorphrOracle.class);
 
    @Override
    public OutputOracle forecast(InputOracle inputOracle) throws OracleException {
@@ -45,18 +45,18 @@ public class FakeOracle implements Oracle {
       return buildLoserFakeOutput(inputOracle);
    }
 
-   private FakeOutputOracle buildWinnerFakeOutput(InputOracle i) {
+   private MorphrOutputOracle buildWinnerFakeOutput(InputOracle i) {
       double abort[] = buildDoubleArray(WIN_A);
       double resp[] = buildDoubleArray(WIN_R);
       double xput[] = buildDoubleArray(WIN_T);
-      return new FakeOutputOracle(xput, resp, abort);
+      return new MorphrOutputOracle(xput, resp, abort);
    }
 
-   private FakeOutputOracle buildLoserFakeOutput(InputOracle i) {
+   private MorphrOutputOracle buildLoserFakeOutput(InputOracle i) {
       double abort[] = buildDoubleArray(LOSE_A);
       double resp[] = buildDoubleArray(LOSE_R);
       double xput[] = buildDoubleArray(LOSE_T);
-      return new FakeOutputOracle(xput, resp, abort);
+      return new MorphrOutputOracle(xput, resp, abort);
    }
 
    private ReplicationProtocol winnerRP(InputOracle inputOracle) {

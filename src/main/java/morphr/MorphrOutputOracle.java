@@ -1,4 +1,4 @@
-package fake;
+package morphr;
 
 import eu.cloudtm.autonomicManager.oracles.OutputOracle;
 
@@ -8,12 +8,12 @@ import eu.cloudtm.autonomicManager.oracles.OutputOracle;
  * @author diego
  * @since 4.0
  */
-public class FakeOutputOracle implements OutputOracle {
+public class MorphrOutputOracle implements OutputOracle {
    private double[] xput = new double[2];
    private double[] respT = new double[2];
    private double[] abort = new double[2];
 
-   public FakeOutputOracle(double[] xput, double[] respT, double[] abort) {
+   public MorphrOutputOracle(double[] xput, double[] respT, double[] abort) {
       this.xput = xput;
       this.respT = respT;
       this.abort = abort;
