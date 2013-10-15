@@ -49,9 +49,6 @@ public class TasOracle_RR_TPC_QUEUE_CPU_CUBIST_NET_MULE extends TasOracle_GMU_TP
 
    private void postWorkload(ISPN_52_TPC_GMU_Workload workload) {
       workload.setRR(true);
-      //workload.setReplicationDegree(workload.getNumNodes());
-      //workload.setLocalAccessProbability(1D);
-      //workload.setLocalPrimaryOwnerProbability(1D / workload.getNumNodes());
    }
 
    private void postServiceTimes(ServiceTimes_CpuNet_QueueCubist_GMU_TPC st) {

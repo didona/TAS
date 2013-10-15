@@ -96,7 +96,7 @@ public class TasOracle_GMU_PB_QUEUE_CPU_CUBIST_NET_MULE extends CommonTasOracle 
       return cpu;
    }
 
-   private ServiceTimes_CpuNet_QueueCubist_GMU_PB buildServiceTimes(InputOracle input) {
+   protected ServiceTimes_CpuNet_QueueCubist_GMU_PB buildServiceTimes(InputOracle input) {
       ServiceTimes_Cpu_GMU_PB cpuS = buildCpuS(input);
       ServiceTimes_Net_Cubist_GMU_PB netS = buildNetS(input);
       return new ServiceTimes_CpuNet_QueueCubist_GMU_PB(cpuS, netS);
