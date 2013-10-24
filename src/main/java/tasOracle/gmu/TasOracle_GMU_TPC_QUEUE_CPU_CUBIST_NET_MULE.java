@@ -84,6 +84,8 @@ public class TasOracle_GMU_TPC_QUEUE_CPU_CUBIST_NET_MULE extends CommonTasOracle
    protected ServiceTimes_CpuNet_QueueCubist_GMU_TPC buildServiceTimes(InputOracle input) {
       GmuCpuServiceTimesImpl cpuS = buildCpuS(input);
       ServiceTimes_Net_Cubist_GMU_TPC netS = buildNetS(input);
+      log.trace(cpuS);
+      log.trace(netS);
       return new ServiceTimes_CpuNet_QueueCubist_GMU_TPC(cpuS, netS);
    }
 
