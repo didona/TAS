@@ -6,7 +6,7 @@
 
     <groupId>TasOracle</groupId>
     <artifactId>TasOracle</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0-GMU</version>
 
     <!--DEPENDENCIES-->
     <dependencies>
@@ -20,7 +20,7 @@
         <dependency>
             <groupId>Tas</groupId>
             <artifactId>Tas</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0-GMU</version>
         </dependency>
 
         <dependency>
