@@ -30,8 +30,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * @author Diego Didona, didona@gsd.inesc-id.pt
- *         Date: 25/08/13
+ * @author Diego Didona, didona@gsd.inesc-id.pt Date: 25/08/13
  */
 public abstract class CommonTasOracle implements TasOracle_I {
 
@@ -119,9 +118,11 @@ public abstract class CommonTasOracle implements TasOracle_I {
       workload.setReadsPerROXact(readsPerROXact);
       workload.setReadsPerWrXact(readsPerWrXact);
       workload.setLocalPrimaryOwnerProbability(primaryOwnerProb);
+      /*
       workload.setUnconditionalLocalCommitQueueWaitingTime(localCommitW);
       workload.setUnconditionalRemoteCommitQueueWaitingTime(remoteCommitW);
       workload.setUnconditionalRemoteGetWaitingTime(0);
+      */
       workload.setRR(true);
       if (log.isTraceEnabled()) log.trace(workload);
       return workload;
