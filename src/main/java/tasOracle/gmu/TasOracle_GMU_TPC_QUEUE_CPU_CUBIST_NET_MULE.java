@@ -36,6 +36,9 @@ public class TasOracle_GMU_TPC_QUEUE_CPU_CUBIST_NET_MULE extends CommonTasOracle
          result = tas.solve(workload, serviceTimes);
          return new TasOutputOracle(result);
       } catch (TasException e) {
+         if (log.isTraceEnabled()) {
+            e.printStackTrace();
+         }
          throw new OracleException(e.getMessage());
       }
    }
