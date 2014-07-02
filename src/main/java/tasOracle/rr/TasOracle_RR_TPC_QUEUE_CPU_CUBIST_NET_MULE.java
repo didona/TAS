@@ -43,6 +43,7 @@ public class TasOracle_RR_TPC_QUEUE_CPU_CUBIST_NET_MULE extends TasOracle_GMU_TP
       } catch (Exception e) {
          log.error(e);
          log.error(Arrays.toString(e.getStackTrace()));
+         e.printStackTrace();
          throw new OracleException(e.getMessage());
       }
    }
